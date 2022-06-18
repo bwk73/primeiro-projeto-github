@@ -1,0 +1,56 @@
+funcao impostoSobreSalario(quantia: real) : real
+inicio
+   se quantia < 36000 entao
+      retorne quantia * 0
+   senao
+      se quantia < 60000 entao
+         retorne quantia * 0.1
+      senao
+         retorne quantia * 0.2
+      fimse
+   fimse
+fimfuncao
+
+
+funcao impostoSobreServicos(quantia: real) : real
+inicio
+   se quantia = 0 entao
+      retorne quantia * 0
+   senao
+      retorne quantia * 0.15
+   fimse
+fimfuncao
+
+funcao impostoSobreGC(quantia: real) : real
+inicio
+   se quantia = 0 entao
+      retorne quantia * 0
+   senao
+      retorne quantia * 0.2
+   fimse
+fimfuncao
+
+
+
+Algoritmo "contribuintes"
+Var
+
+   salario, prestacaoServico, ganhoCapital : real
+
+Inicio
+
+   escreval("Digite os dados do contribuinte:")
+   escreva("Renda anual com salário: ")
+   leia(salario)
+   escreva("Renda anual com prestação de serviço: ")
+   leia(prestacaoServico)
+   escreva("Renda anual com ganho de capital: ")
+   leia(ganhoCapital)
+
+   escreval
+   escreval("RELATÓRIO:")
+   escreval("Imposto sobre salário: ", impostoSobreSalario(salario):8:2)
+   escreval("Imposto sobre serviços: ", impostoSobreServicos(prestacaoServico):8:2)
+   escreval("Imposto sobre ganho de capital: ", impostoSobreGC(ganhoCapital):8:2)
+
+Fimalgoritmo
