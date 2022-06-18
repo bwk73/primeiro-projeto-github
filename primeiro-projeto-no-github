@@ -31,11 +31,30 @@ inicio
 fimfuncao
 
 
+funcao impostoBrutoTotal(salario: real; servicos: real; gc: real) : real
+inicio
+   retorne  impostoSobreSalario(salario) + impostoSobreServicos(servicos) + impostoSobreGC(gc)
+fimfuncao
+
+
+funcao abatimento(salario: real; servicos: real; gc: real; gastosMedicos: real; gastosEducacionais: real) : real
+var
+   gastos : real
+inicio
+   gastos <- gastosMedicos + gastosEducacionais
+   se gastos < impostoBrutoTotal(salario, servicos, gc) * 0.3 entao
+      retorne gastos
+   senao
+      retorne impostoBrutoTotal(salario, servicos, gc) * 0.3
+   fimse
+fimfuncao
+
+
 
 Algoritmo "contribuintes"
 Var
 
-   salario, prestacaoServico, ganhoCapital : real
+   salario, prestacaoServico, ganhoCapital, gastosMed, gastosEdu : real
 
 Inicio
 
@@ -46,11 +65,18 @@ Inicio
    leia(prestacaoServico)
    escreva("Renda anual com ganho de capital: ")
    leia(ganhoCapital)
+   escreva("Gastos médicos: ")
+   leia(gastosMed)
+   escreva("Gastos educacionais: ")
+   leia(gastosEdu)
+
 
    escreval
    escreval("RELATÓRIO:")
    escreval("Imposto sobre salário: ", impostoSobreSalario(salario):8:2)
    escreval("Imposto sobre serviços: ", impostoSobreServicos(prestacaoServico):8:2)
    escreval("Imposto sobre ganho de capital: ", impostoSobreGC(ganhoCapital):8:2)
+   escreval("Imposto bruto total: ", impostoBrutoTotal(salario, prestacaoServico, ganhoCapital):8:2)
+   escreval("Abatimento: ", abatimento(salario, prestacaoServico, ganhoCapital, gastosMed, gastosEdu):8:2)
 
 Fimalgoritmo
