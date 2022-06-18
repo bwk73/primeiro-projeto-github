@@ -50,6 +50,12 @@ inicio
 fimfuncao
 
 
+funcao impostoDevido(salario: real; servicos: real; gc: real; gastosMedicos: real; gastosEducacionais: real) : real
+inicio
+   retorne impostoBrutoTotal(salario, servicos, gc) - abatimento(salario, servicos, gc, gastosMedicos, gastosEducacionais)
+fimfuncao
+
+
 
 Algoritmo "contribuintes"
 Var
@@ -78,5 +84,6 @@ Inicio
    escreval("Imposto sobre ganho de capital: ", impostoSobreGC(ganhoCapital):8:2)
    escreval("Imposto bruto total: ", impostoBrutoTotal(salario, prestacaoServico, ganhoCapital):8:2)
    escreval("Abatimento: ", abatimento(salario, prestacaoServico, ganhoCapital, gastosMed, gastosEdu):8:2)
+   escreval("Imposto devido: ", impostoDevido(salario, prestacaoServico, ganhoCapital, gastosMed, gastosEdu):8:2)
 
 Fimalgoritmo
